@@ -1,0 +1,7 @@
+{
+  "name": "tune-sync-client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
