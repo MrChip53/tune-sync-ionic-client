@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tunes
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button *ngIf="!this.audioService.isPaused()" (click)="this.audioService.pause()">
+        <ion-icon slot="icon-only" name="stop"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-item class="ion-activatable ripple-parent" *ngFor="let tune of this.apiService.tunes" (click)="playAudio(this.apiService.getTuneUrl(tune))">
+      <div *ngIf="tune.title">{{tune.title}} - {{tune.artist}}</div>
+      <div *ngIf="!tune.title">{{tune.path}}</div>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-item>
+  </ion-list>
+</ion-content>
